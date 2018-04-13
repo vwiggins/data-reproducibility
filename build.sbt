@@ -13,3 +13,5 @@ lazy val root = (project in file(".")).
     libraryDependencies += "com.github.springernature" %% "samatra-extras" % "v1.8.3",
     libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.0"
   )
+
+enablePlugins(JavaAppPackaging)
