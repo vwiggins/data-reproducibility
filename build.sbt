@@ -10,5 +10,6 @@ lazy val root = (project in file(".")).
     name := "data-reproducibility",
     resolvers += "jitpack" at "https://jitpack.io",
     libraryDependencies += scalaTest % Test,
-    libraryDependencies += "com.github.springernature" %% "samatra-extras" % "v1.8.3"
+    libraryDependencies += "com.github.springernature" %% "samatra-extras" % "v1.8.3",
+    libraryDependencies += "org.json4s" %% "json4s-native" % "3.5.0"
   )
