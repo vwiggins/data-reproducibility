@@ -16,7 +16,7 @@ object ApiController extends Controller {
   }
 
   def main(args: Array[String]): Unit = {
-    new WebServer(sys.env("PORT").toInt)
+    new WebServer(if (sys.env.contains("PORT")) sys.env("PORT").toInt else 8080)
       .addHandler(new WebappContextHandler with RoutePrinting {}
         .addRoutes("/*", ApiController)
         .printRoutesTo(System.out)
