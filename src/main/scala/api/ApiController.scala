@@ -16,7 +16,7 @@ object ApiController extends Controller {
   }
 
   def main(args: Array[String]): Unit = {
-    new WebServer(8080)
+    new WebServer(sys.env("PORT").toInt)
       .addHandler(new WebappContextHandler with RoutePrinting {}
         .addRoutes("/*", ApiController)
         .printRoutesTo(System.out)
