@@ -3,9 +3,17 @@ package api
 import com.springer.samatra.extras.{RoutePrinting, WebServer, WebappContextHandler}
 import com.springer.samatra.routing.Routings.{Controller}
 import com.springer.samatra.routing.StandardResponses.Implicits._
+import org.json4s._
+import org.json4s.native.Serialization.write
 
 object ApiController extends Controller {
-  get("/repos/:subject") { req => s"hi ${req.captured("subject")}" }
+  import domain.Domain._
+  implicit val formats = DefaultFormats
+
+  get("/repos/:subject") { req =>
+    val key = {req.captured("subject")}
+    write(subjectToRepoMapping(key))
+  }
 
   def main(args: Array[String]): Unit = {
     new WebServer(8080)
